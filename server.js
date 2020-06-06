@@ -14,11 +14,15 @@ const image = require("./controllers/image");
 // import env api setting
 //console.log(process.env.CLARIFAI_API_KEY);
 
+// temp disable of ssl cerficate source validation
+// for testing
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 const db = require("knex")({
   client: "pg",
   connection: {
     connectionString: process.env.DATABASE_URL,
-    //ssl: true,
+    ssl: true,
   },
 });
 
